@@ -4,7 +4,7 @@ All about pianos and music theory
 
 ## Project folder structure
 
-```
+``` bash
 PyAno
 |   .gitattributes
 |   .gitignore
