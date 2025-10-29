@@ -13,23 +13,35 @@ PyAno
 |   config.yaml
 |   README.md
 |   tree.txt
+|   
 +---core
 |   |   __init__.py
+|   |   
 |   +---chords
 |   |       __init__.py
+|   |       
 |   +---circles
 |   |       __init__.py
+|   |       
 |   +---lessons
 |   |       __init__.py
+|   |       
 |   +---pianos
+|   |       pianos.py
+|   |       piano_categories.py
+|   |       piano_types.py
 |   |       __init__.py
+|   |       
 |   +---scales
 |   |       __init__.py
+|   |       
 |   \---tones
 |           __init__.py
+|           
 +---data_store
 |   +---db
 |   |       py_ano.db
+|   |       
 |   \---files
 |           chords.json
 |           circles.json
@@ -37,6 +49,7 @@ PyAno
 |           pianos.json
 |           scales.json
 |           tones.json
+|           
 +---gui
 |   |   main_menu.py
 |   |   __init__.py
