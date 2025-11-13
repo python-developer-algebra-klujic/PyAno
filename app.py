@@ -1,6 +1,6 @@
 from config import AppConfig
 from infrastructure.base_repository import BaseRepository
-from core.pianos.piano_categories import PianoCategory
+from core.pianos.pianos import Piano
 
 
 def load_config() -> AppConfig:
@@ -17,9 +17,18 @@ def main():
     #   Primjer za modele: Piano, PianoCategory
     #   repo.Piano.create(new_piano)
     #   repo.PianoCategory.create(new_piano_category)
-    piano_category = PianoCategory(name='acoustic')
-    piano_category = repo.piano_category_repo.add(piano_category)
-    print(piano_category)
+    print(repo.piano_category_repo.get_all())
+    print(repo.piano_type_repo.get_all())
+
+    piano_cat_acustic = repo.piano_category_repo.get_by_name('Acustic')
+    piano_type_grand = repo.piano_type_repo.get_by_name('Grand')
+    piano = Piano(name='Steinway Grand',
+                  price=5897258.99,
+                  piano_category=piano_cat_acustic,
+                  piano_type=piano_type_grand)
+    print("Piano prije DB", piano)
+    piano = repo.piano_repo.add(piano)
+    print("Piano poslije DB", piano)
 
 
 if __name__ == "__main__":
