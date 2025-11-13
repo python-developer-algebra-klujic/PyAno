@@ -11,6 +11,7 @@ def main():
     config = load_config()
     # Kreiraj db repo i pokreni GUI
     repo = BaseRepository()
+    repo.db_seed()
     # Uporaba repozitorija na nacin:
     #   repo.ModelRepository.crud_methods
     #   Primjer za modele: Piano, PianoCategory

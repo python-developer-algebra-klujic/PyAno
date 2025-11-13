@@ -16,10 +16,10 @@ class Piano(Base):
     image_url = Column(String(URL_LENGHT), nullable=True)
     location = Column(String(LOCATION_STR), nullable=True)
 
-    piano_type = relationship('core.pianos.piano_types.PianoType', back_populates='pianos')
+    piano_type = relationship('PianoType', back_populates='pianos')
     piano_type_id = Column(Integer, ForeignKey('piano_type.id'))
 
-    piano_category = relationship('core.pianos.piano_categories.PianoCategory', back_populates='pianos')
+    piano_category = relationship('PianoCategory', back_populates='pianos')
     piano_category_id = Column(Integer, ForeignKey('piano_category.id'))
 
     def __repr__(self):

@@ -10,6 +10,9 @@ URL_LENGHT = 450
 LOCATION_STR = 50
 
 
+PIANO_CATEGORIES = ["Acoustic", "Electric", "Grand", "Upright", "Digital", "Hybrid"]
+PIANO_TYPES = ["Acoustic", "Electric", "Digital", "Grand", "Upright"]
+
 
 class AppConfig:
     def __init__(self, db_path: str = DATABASE_PATH):
