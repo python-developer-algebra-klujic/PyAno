@@ -1,8 +1,12 @@
+from sqlalchemy import Column, Integer
+
+from infrastructure.database.database import Base
 
 
+class PianoCategory(Base):
+    __tablename__ = 'piano-category'
 
-class PianoCategories:
-    pass
+    id = Column(Integer)
 
 
 
