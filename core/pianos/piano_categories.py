@@ -11,7 +11,7 @@ class PianoCategory(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(NAME_LENGHT), nullable=False)
 
-    pianos = relationship('Piano', back_populates='piano_category')
+    pianos = relationship('core.pianos.pianos.Piano', back_populates='piano_category')
 
     def __repr__(self):
         return f'Piano category: {self.name}'
