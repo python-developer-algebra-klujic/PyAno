@@ -1,8 +1,7 @@
-from pyfiglet import Figlet
-
 from config import AppConfig
 from infrastructure.base_repository import BaseRepository
 from core.pianos.pianos import Piano
+from pyfiglet import Figlet
 
 
 def load_config() -> AppConfig:
@@ -10,7 +9,6 @@ def load_config() -> AppConfig:
 
 
 def main():
-    config = load_config()
     # Kreiraj db repo i pokreni GUI
     repo = BaseRepository()
     repo.db_seed()
@@ -34,9 +32,9 @@ def main():
                   price=5897258.99,
                   piano_category=piano_cat_acustic,
                   piano_type=piano_type_grand)
-    # print("Piano prije DB", piano)
-    # piano = repo.piano_repo.add(piano)
-    # print("Piano poslije DB", piano)
+    print("Piano prije DB", piano)
+    piano = repo.piano_repo.add(piano)
+    print("Piano poslije DB", piano)
 
 
 
