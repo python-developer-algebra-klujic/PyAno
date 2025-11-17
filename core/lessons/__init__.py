@@ -1,1 +1,3 @@
-from .lesons import Lesson
+from .lessons import Lesson
+
+__all__ = ['Lesson']

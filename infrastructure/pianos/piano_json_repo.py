@@ -16,4 +16,4 @@ class PianoJsonRepository(JsonRepository[Piano]):
         Inicijalizator poziva 'super' (roditeljski) konstruktor
         i prosljeđuje mu točno određen model (Piano) i putanju do datoteke.
         """
-        super().__init__(file_path=PIANOS_JSON_FILE, model_class=Piano)idemo 
+        super().__init__(file_path=PIANOS_JSON_FILE, model_class=Piano)
