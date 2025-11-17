@@ -1,42 +1,21 @@
 from config import AppConfig
 from infrastructure.base_repository import BaseRepository
-from core.pianos.pianos import Piano
-from pyfiglet import Figlet
-
+from gui.main_menu import main_menu
 
 def load_config() -> AppConfig:
     return AppConfig()
 
-
 def main():
-    # Kreiraj db repo i pokreni GUI
+    # 1. Učitaj konfiguraciju
+    config = load_config()
+    
+    # 2. Inicijaliziraj repozitorije i bazu (ako ne postoje JSON datoteke, kreirat će se)
     repo = BaseRepository()
-    repo.db_seed()
-
-
-    f = Figlet(font='slant')
-    # Uporaba repozitorija na nacin:
-    #   repo.ModelRepository.crud_methods
-    #   Primjer za modele: Piano, PianoCategory
-    #   repo.Piano.create(new_piano)
-    #   repo.PianoCategory.create(new_piano_category)
-    print(f.renderText('Pyano'))
-    print()
-    print()
-    # print(repo.piano_category_repo.get_all())
-    # print(repo.piano_type_repo.get_all())
-
-    piano_cat_acustic = repo.piano_category_repo.get_by_name('Acustic')
-    piano_type_grand = repo.piano_type_repo.get_by_name('Grand')
-    piano = Piano(name='Steinway Grand',
-                  price=5897258.99,
-                  piano_category=piano_cat_acustic,
-                  piano_type=piano_type_grand)
-    print("Piano prije DB", piano)
-    piano = repo.piano_repo.add(piano)
-    print("Piano poslije DB", piano)
-
-
+    # Opcionalno: repo.db_seed() # Otkomentiraj samo ako želiš ponovno napuniti početnim podacima
+    
+    # 3. Pokreni Glavni Izbornik (GUI)
+    # Ovo je petlja koja će vrtjeti aplikaciju dok korisnik ne izađe
+    main_menu()
 
 if __name__ == "__main__":
     main()
