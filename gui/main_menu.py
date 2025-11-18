@@ -24,7 +24,7 @@ def show_secret_menu():
     # Prikaz PyAno u zelenoj boji
     print("\n" + GREEN + pyfiglet.figlet_format("PyAno", font="slant") + RESET)
     # Prikaz PyZ3R u zelenoj boji
-    print(GREEN + pyfiglet.figlet_format("PyZ3R", font="slant") + RESET)
+    print(GREEN + pyfiglet.figlet_format("PyZ3R", font="roman") + RESET)
     
     print("\n" + "="*40)
     print("   SECRET DEV MENU ACTIVATED")
