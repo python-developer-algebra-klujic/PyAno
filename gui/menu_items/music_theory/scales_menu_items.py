@@ -14,7 +14,8 @@ def display_scales(scales):
     else:
         for scale in scales:
             desc = scale.description if scale.description else ""
-            if len(desc) > 37: desc = desc[:37] + "..."
+            if len(desc) > 37:
+                desc = desc[:37] + "..."
             print(f"{scale.id:<5} {scale.name:<20} {desc:<40}")
     print("-" * 70)
 
@@ -39,7 +40,7 @@ def delete_scale():
         if service.delete(scale_id):
              print(f"✅ Ljestvica ID {scale_id} je obrisana.")
         else:
-             print(f"❌ Nije pronađeno.")
+             print("❌ Nije pronađeno.")
     except ValueError:
         print("ID mora biti broj.")
 
