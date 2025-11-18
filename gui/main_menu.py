@@ -2,6 +2,7 @@
 import os
 import pyfiglet
 from gui.menu_items.pianos_menu_items import pianos_menu
+from gui.menu_items.lessons_menu_items import lessons_menu
 
 __all__ = ["main_menu"]
 
@@ -39,8 +40,7 @@ def main_menu() -> None:
             print("\nOpcija u pripremi...")
             input("\nPritisnite Enter za nastavak...")
         elif choice == '3':
-            print("\nOpcija u pripremi...")
-            input("\nPritisnite Enter za nastavak...")
+            lessons_menu() # <--- Pozivamo funkciju
         elif choice == '4':
             print("\nOpcija u pripremi...")
             input("\nPritisnite Enter za nastavak...")
