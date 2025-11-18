@@ -151,4 +151,13 @@ Svi zadaci iz plana razvoja su uspješno realizirani:
 
     [x] Soft Delete: Podaci se ne brišu trajno, već se označavaju kao obrisani (is_deleted: true).
 
-    
+ ooooooooo.                oooooooooooo   .oooo.   ooooooooo.   
+`888   `Y88.             d'""""""d888' .dP""Y88b  `888   `Y88. 
+ 888   .d88' oooo    ooo       .888P         ]8P'  888   .d88' 
+ 888ooo88P'   `88.  .8'       d888'        <88b.   888ooo88P'  
+ 888           `88..8'      .888P           `88b.  888`88b.    
+ 888            `888'      d888'    .P o.   .88P   888  `88b.  
+o888o            .8'     .8888888888P  `8bd88P'   o888o  o888o 
+             .o..P'                                            
+             `Y8P'                                             
+                                                               
