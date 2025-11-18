@@ -48,3 +48,32 @@ Nakon implementacije `Core`, `Infrastructure` i `Service` slojeva (15.11.2025.),
 3.  **Manji problem (Dokumentacija):** `README.md` je oštećen.
     * **Datoteka:** `README.md`
     * **Problem:** Sadržaj je pomiješan i neformatiran. Potrebno je zamijeniti sadržaj s čistom verzijom.
+
+    ---
+
+## Dan 2: Implementacija GUI-ja i Finalizacija (16.11.2025.)
+
+Danas je fokus bio na izradi korisničkog sučelja (GUI) i povezivanju svih komponenti sustava.
+
+### 1. Rješavanje Tehničkog Duga (Bug Fixes)
+Uspješno su riješeni kritični problemi identificirani prethodnog dana:
+* ✅ **Popravak Sintakse:** Uklonjena suvišna riječ `idemo` iz `infrastructure/pianos/piano_json_repo.py`.
+* ✅ **Ispravak Importa:** Datoteka `core/lessons/lesons.py` preimenovana je u `lessons.py`, a `__init__.py` je ažuriran. Aplikacija se sada pokreće bez grešaka.
+
+### 2. Implementacija Grafičkog Sučelja (GUI)
+Kreiran je robustan sustav konzolnih izbornika unutar `gui/` paketa:
+* **Glavni Izbornik (`main_menu.py`):** Služi kao centralna točka navigacije.
+* **Pod-izbornici:** Kreirani su zasebni moduli za svaku domenu:
+    * `pianos_menu_items.py`: Upravljanje klavirima.
+    * `lessons_menu_items.py`: Upravljanje lekcijama.
+    * `music_theory/`: Poseban paket za teoriju koji sadrži `tones_menu_items.py` i `scales_menu_items.py`, povezan preko `music_theory_menu_items.py`.
+
+### 3. Integracija Sustava
+* **`app.py`:** Ulazna točka aplikacije je ažurirana. Više ne izvršava testni kod za bazu, već inicijalizira `BaseRepository` (za kreiranje JSON datoteka) i odmah pokreće `main_menu()`.
+* **JSON Perzistencija:** Potvrđeno je da se svi podaci (Klaviri, Tonovi, Lekcije) uspješno spremaju i čitaju iz `.json` datoteka u `data_store/files/`.
+
+### Zaključak
+Projekt je funkcionalan i zadovoljava sve zahtjeve zadatka:
+1.  Slojevita arhitektura (Core, Infrastructure, Services, GUI).
+2.  Korištenje JSON repozitorija umjesto SQL baze.
+3.  Implementirano "meko brisanje" (Soft Delete).
