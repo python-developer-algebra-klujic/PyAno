@@ -1,120 +1,163 @@
-# PyAno
+# 🎹 PyAno
 
-All about pianos and music theory
+> **All about pianos and music theory.**
 
-## Project folder structure
+Dobrodošli u **PyAno**, sveobuhvatnu Python aplikaciju za upravljanje podacima o klavirima i teoriji glazbe. Ovaj projekt demonstrira naprednu, višeslojnu arhitekturu softvera, korištenje ORM-a (SQLAlchemy) i hibridnu pohranu podataka (SQLite + JSON).
 
-``` bash
-PyAno
-|   .gitattributes
-|   .gitignore
-|   app.py
-|   config.py
-|   config.yaml
-|   README.md
-|   tree.txt
-|   
-+---core
-|   |   __init__.py
-|   |   
-|   +---chords
-|   |       __init__.py
-|   |       
-|   +---circles
-|   |       __init__.py
-|   |       
-|   +---lessons
-|   |       __init__.py
-|   |       
-|   +---pianos
-|   |       pianos.py
-|   |       piano_categories.py
-|   |       piano_types.py
-|   |       __init__.py
-|   |       
-|   +---scales
-|   |       __init__.py
-|   |       
-|   \---tones
-|           __init__.py
-|           
-+---data_store
-|   +---db
-|   |       py_ano.db
-|   |       
-|   \---files
-|           chords.json
-|           circles.json
-|           lessons.json
-|           pianos.json
-|           scales.json
-|           tones.json
-|           
-+---gui
-|   |   main_menu.py
-|   |   __init__.py
-|   |   
-|   \---menu_items
-|       |   lessons_menu_items.py
-|       |   pianos_menu_items.py
-|       |   __init__.py
-|       |   
-|       \---music_theory
-|               chords_menu_items.py
-|               circles_menu_items.py
-|               music_theory_menu_items.py
-|               scales_menu_items.py
-|               tones_menu_items.py
-|               __init__.py
-|               
-+---infrastructure
-|   |   __init__.py
-|   |   
-|   +---chords
-|   |       __init__.py
-|   |       
-|   +---circles
-|   |       __init__.py
-|   |       
-|   +---lessons
-|   |       __init__.py
-|   |       
-|   +---pianos
-|   |       __init__.py
-|   |       
-|   +---scales
-|   |       __init__.py
-|   |       
-|   \---tones
-|           __init__.py
-|           
-+---services
-|   |   __init__.py
-|   |   
-|   +---chords
-|   |       __init__.py
-|   |       
-|   +---circles
-|   |       __init__.py
-|   |       
-|   +---lessons
-|   |       __init__.py
-|   |       
-|   +---pianos
-|   |       __init__.py
-|   |       
-|   +---scales
-|   |       __init__.py
-|   |       
-|   \---tones
-|           __init__.py
-|           
-\---venv
-```
+---
 
-## Zadatak
+## 🚀 Kako pokrenuti projekt
 
-- Kreirati klase za sve modele unutar core paketa.
-- Kreirati klase repozitorija za pohranu svih modela unutar .json datoteka. Naziv .json datoteke treba biti *naziv_modela.json*.
-- Kreirati servise za svaki model tako da servis poziva CRUD (Create, Read, Update, Delete) metode iz repozitorija. Kod inicijalizacije servisa, treba definirati da se koristi pohrana u .json datoteke.
-- Unutar GUI paketa kreirati izbornike i ovisno o izboru korisnika pozivati odgovarajuću metodu iz servisa kako bi se prikazao jedan ili lista entiteta. Isto virjedi i za brisanje i ažuriranje. Brisanje ne briše iz baze nego se koristi *soft delete*.
+Slijedite ove korake kako biste postavili projekt na svom lokalnom računalu.
+
+### 1. Priprema okruženja
+
+Preporučuje se korištenje virtualnog okruženja (`venv`) za izolaciju zavisnosti projekta.
+
+**🐧 Linux (POP OS, Ubuntu) / 🍎 macOS**
+```bash
+# 1. Kreirajte virtualno okruženje
+python3 -m venv venv
+
+# 2. Aktivirajte okruženje
+source venv/bin/activate
+
+# 1. Kreirajte virtualno okruženje
+python -m venv venv
+
+# 2. Aktivirajte okruženje
+.\venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python app.py
+
+Modul,Opis
+core/,"Domenski Modeli. Ovdje žive Python klase (npr. Piano, Tone, Scale) koje predstavljaju stvarne entitete. Ovi modeli nasljeđuju SQLAlchemy Base klasu."
+infrastructure/,"Pristup Podacima. Sadrži konfiguraciju baze i Repozitorije. Repozitoriji (npr. piano_repo.py) sadrže metode za CRUD operacije (Create, Read, Update, Delete)."
+services/,Poslovna Logika. Ovaj sloj povezuje GUI i Repozitorije. Ovdje se donose odluke i obrađuju podaci prije spremanja ili prikazivanja.
+gui/,"Korisničko Sučelje. Kod zadužen za interakciju s korisnikom (izbornici, tablice, unos podataka)."
+data_store/,Pohrana. Fizička lokacija podataka: • db/py_ano.db (SQLite baza)• files/*.json (JSON datoteke)
+
+from sqlalchemy import Column, Integer, String
+from infrastructure.database.database import Base
+from config import NAME_LENGHT, DESCRIPTION_LENGHT, URL_LENGHT
+
+class Tone(Base):
+    __tablename__ = "tones"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(NAME_LENGHT), unique=True, index=True, nullable=False)
+
+    description = Column(String(DESCRIPTION_LENGHT), nullable=True)
+    image_url = Column(String(URL_LENGHT), nullable=True)
+
+    def __repr__(self):
+        return f'Tone {self.name}'
+
+        PyAno
+├── app.py                  # Main entry point
+├── config.py               # Global configuration
+├── requirements.txt        # Project dependencies
+├── core/                   # Models (Piano, Tone, Scale...)
+├── infrastructure/         # Repositories (SQL & JSON)
+├── services/               # Business logic services
+├── gui/                    # User Interface menus
+└── data_store/             # Database and JSON storage
+
+✅ Zadaci (Roadmap)
+
+Trenutni fokus razvoja projekta:
+
+    [x] Kreirati klase za sve modele unutar core paketa (Tone, Scale, Circle, Lesson).
+
+    [ ] Kreirati klase repozitorija za pohranu modela unutar .json datoteka.
+
+        [ ] Format naziva: naziv_modela.json.
+
+    [ ] Kreirati Servise za svaki model koji pozivaju CRUD metode iz JSON repozitorija.
+
+    [ ] Implementirati GUI izbornike za interakciju s korisnikom.
+
+    [ ] Implementirati Soft Delete (brisanje označava podatak kao "obrisan", ali ga ne uklanja fizički).
+# 🎹 PyAno
+
+> **All about pianos and music theory.**
+
+Dobrodošli u **PyAno**, sveobuhvatnu Python aplikaciju za upravljanje podacima o klavirima i teoriji glazbe. Ovaj projekt demonstrira naprednu, višeslojnu arhitekturu softvera, korištenje ORM-a (SQLAlchemy) i hibridnu pohranu podataka (SQLite + JSON).
+
+---
+
+## 🚀 Kako pokrenuti projekt
+
+Slijedite ove korake kako biste postavili projekt na svom lokalnom računalu.
+
+### 1. Priprema okruženja
+
+Preporučuje se korištenje virtualnog okruženja (`venv`) za izolaciju zavisnosti projekta.
+
+**🐧 Linux (POP OS, Ubuntu) / 🍎 macOS**
+```bash
+# 1. Kreirajte virtualno okruženje
+python3 -m venv venv
+
+# 2. Aktivirajte okruženje
+source venv/bin/activate
+
+🪟 Windows
+PowerShell
+
+# 1. Kreirajte virtualno okruženje
+python -m venv venv
+
+# 2. Aktivirajte okruženje
+.\venv\Scripts\activate
+
+2. Instalacija zavisnosti
+
+Nakon što aktivirate okruženje, instalirajte potrebne biblioteke:
+Bash
+
+pip install -r requirements.txt
+
+3. Pokretanje aplikacije
+
+Pokrenite glavnu aplikaciju:
+Bash
+
+python app.py
+
+🏗️ Arhitektura Aplikacije
+
+Projekt je organiziran u jasne slojeve radi lakšeg održavanja i proširivanja.
+Modul	Opis
+core/	Domenski Modeli. Ovdje žive Python klase (npr. Piano, Tone, Scale) koje predstavljaju stvarne entitete.
+infrastructure/	Pristup Podacima. Sadrži logiku za pohranu podataka. Trenutno koristi JSON repozitorije za spremanje podataka u datoteke.
+services/	Poslovna Logika. Ovaj sloj povezuje GUI i Repozitorije. Ovdje se donose odluke i obrađuju podaci prije spremanja.
+gui/	Korisničko Sučelje. Konzole izbornici za interakciju s korisnikom.
+data_store/	Pohrana. Fizička lokacija podataka (files/*.json).
+
+✅ Status Projekta
+
+Svi zadaci iz plana razvoja su uspješno realizirani:
+
+    [x] Modeli: Kreirane klase u core paketu (Tone, Scale, Circle, Lesson, Piano).
+
+    [x] Repozitoriji: Implementiran generički JsonRepository i specifični repozitoriji za sve modele.
+
+    [x] Servisi: Kreiran servisni sloj za poslovnu logiku.
+
+    [x] GUI: Implementiran glavni izbornik i pod-izbornici za upravljanje podacima.
+
+    [x] Soft Delete: Podaci se ne brišu trajno, već se označavaju kao obrisani (is_deleted: true).
+
+ ooooooooo.                oooooooooooo   .oooo.   ooooooooo.   
+`888   `Y88.             d'""""""d888' .dP""Y88b  `888   `Y88. 
+ 888   .d88' oooo    ooo       .888P         ]8P'  888   .d88' 
+ 888ooo88P'   `88.  .8'       d888'        <88b.   888ooo88P'  
+ 888           `88..8'      .888P           `88b.  888`88b.    
+ 888            `888'      d888'    .P o.   .88P   888  `88b.  
+o888o            .8'     .8888888888P  `8bd88P'   o888o  o888o 
+             .o..P'                                            
+             `Y8P'                                             
+                                                               

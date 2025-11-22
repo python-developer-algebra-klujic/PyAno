@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "a",
+        "price": 33.0,
+        "description": null,
+        "image_url": null,
+        "location": null,
+        "piano_type_id": null,
+        "piano_category_id": null,
+        "is_deleted": false
+    }
+]
